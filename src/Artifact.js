@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, Clone , MeshDistortMaterial} from "@react-three/drei";
 import artifactUrl from './assets/artifact.glb'
 
 export default function Model(props) {
@@ -19,6 +19,7 @@ export default function Model(props) {
         geometry={nodes.inner_ring.geometry}
         material={nodes.inner_ring.material}
       />
+
       <mesh
         castShadow
         receiveShadow
@@ -43,12 +44,15 @@ export default function Model(props) {
         geometry={nodes.connectors.geometry}
         material={nodes.connectors.material}
       />
-      <mesh
+      <Clone object={nodes.Inner_Sphere}
+        inject = {<MeshDistortMaterial color={nodes.Inner_Sphere.material.color} metalness={1} roughness={0} distort={.1}/>}
+      />
+      {/* <mesh
         castShadow
         receiveShadow
         geometry={nodes.Inner_Sphere.geometry}
         material={nodes.Inner_Sphere.material}
-      />
+      /> */}
       <mesh
         castShadow
         receiveShadow
