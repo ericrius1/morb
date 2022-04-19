@@ -37,7 +37,7 @@ export default function App() {
              <Player />
              <Ground />
         </Physics>
-        {/* <PointerLockControls /> */}
+        <PointerLockControls />
          <Suspense fallback={null}>
             <ambientLight intensity={0.5} />
             <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
