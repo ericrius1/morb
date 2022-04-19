@@ -1,7 +1,10 @@
 import { useRef, useState, Suspense } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { OrbitControls } from '@react-three/drei'
+import { OrbitControls, PointerLockControls } from '@react-three/drei'
+import { Physics } from "@react-three/cannon"
 import Artifact from './Artifact'
+import { Player } from "./Player"
+import {Ground} from './Ground'
 
 function Box(props) {
   // This reference gives us direct access to the THREE.Mesh object
@@ -29,12 +32,17 @@ function Box(props) {
 export default function App() {
   return (
     <Canvas>
-        <OrbitControls/>
+        {/* <OrbitControls/> */}
+        <Physics gravity={[0, -10, 0]}>
+             <Player />
+             <Ground />
+        </Physics>
+        {/* <PointerLockControls /> */}
          <Suspense fallback={null}>
             <ambientLight intensity={0.5} />
             <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
             <pointLight position={[-10, -10, -10]} />
-            <Box position={[-1.2, 0, 0]} />
+            <Box position={[-1.2, 2, 0]} />
             <Box position={[1.2, 0, 0]} />
             <Artifact/>
         </Suspense>

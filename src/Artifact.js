@@ -45,14 +45,8 @@ export default function Model(props) {
         material={nodes.connectors.material}
       />
       <Clone object={nodes.Inner_Sphere}
-        inject = {<MeshDistortMaterial color={nodes.Inner_Sphere.material.color} metalness={1} roughness={0} distort={.1}/>}
-      />
-      {/* <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Inner_Sphere.geometry}
-        material={nodes.Inner_Sphere.material}
-      /> */}
+        inject = {<MeshDistortMaterial color="blue" metalness={1} roughness={0} distort={.1}/>}
+      />c
       <mesh
         castShadow
         receiveShadow
